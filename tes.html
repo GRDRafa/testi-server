@@ -1,0 +1,1269 @@
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>YANSS STORE - Top Up Robux Termurah</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      background: linear-gradient(135deg, #3b99fc, #2249fe);
+      min-height: 100vh;
+      margin: 0;
+      color: #1e293b;
+    }
+    /* Scrollbar for chat */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #2563eb;
+      border-radius: 10px;
+    }
+    /* Chat bubble styles */
+    .chat-bubble {
+      max-width: 80%;
+      padding: 0.75rem 1rem;
+      border-radius: 1rem;
+      margin-bottom: 0.5rem;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      transition: background-color 0.3s ease;
+    }
+    .chat-user {
+      background-color: #2563eb;
+      color: white;
+      border-bottom-right-radius: 0;
+      align-self: flex-end;
+    }
+    .chat-bot {
+      background-color: #e0e7ff;
+      color: #1e293b;
+      border-bottom-left-radius: 0;
+      align-self: flex-start;
+    }
+    /* Smooth input number arrows removal for better UI */
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+    /* Payment method hover effect */
+    .payment-method:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgb(220 38 38 / 0.4);
+    }
+    .payment-method {
+      transition: all 0.3s ease;
+    }
+    /* Navbar mobile menu animation */
+    #mobileMenu {
+      transition: max-height 0.3s ease;
+      overflow: hidden;
+    }
+    /* Hero image animation */
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+    .hero-img-animated {
+      animation: float 6s ease-in-out infinite;
+    }
+    /* Button pulse effect */
+    .btn-pulse {
+      animation: pulse 2.5s infinite;
+    }
+    @keyframes pulse {
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+      }
+      50% {
+        box-shadow: 0 0 15px 8px rgba(239, 68, 68, 0);
+      }
+    }
+    /* Tab active style */
+    .tab-btn[aria-selected="true"] {
+      background-color: #b91c1c;
+      box-shadow: 0 0 10px #b91c1caa;
+    }
+    /* Responsive chat input */
+    @media (max-width: 640px) {
+      #chatInput {
+        font-size: 1rem;
+      }
+    }
+    /* Additional styling for accessories and enhancements */
+    .accessory-icon {
+      color: #b91c1c;
+      transition: color 0.3s ease;
+    }
+    .accessory-icon:hover {
+      color: #ef4444;
+    }
+    /* Gamepass list enhancements */
+    .gamepass-item {
+      position: relative;
+      overflow: hidden;
+    }
+    .gamepass-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #fef3f3, #fee2e2);
+      opacity: 0.3;
+      z-index: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gamepass-item:hover::before {
+      opacity: 0.6;
+    }
+    .gamepass-content {
+      position: relative;
+      z-index: 10;
+    }
+    /* Payment method icons scaling */
+    .payment-method img {
+      transition: transform 0.3s ease;
+    }
+    .payment-method:hover img {
+      transform: scale(1.1);
+    }
+    /* Footer icons hover */
+    footer a:hover i {
+      color: #b91c1c;
+    }
+    /* Sticky navbar shadow on scroll */
+    nav.sticky-shadow {
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+      transition: box-shadow 0.3s ease;
+    }
+    /* Fade in animation */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .fade-in {
+      animation: 1s fadeInUp ease-out forwards;
+    }
+    /* Robux package cards grid */
+    #robuxPackages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      max-width: 5xl;
+      margin: 0 auto 3rem auto;
+    }
+    .package-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.5rem 1.25rem 2rem 1.25rem;
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+    .package-card:hover,
+    .package-card.selected {
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px rgb(0 0 0 / 0.15);
+      z-index: 10;
+    }
+    .package-card .badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #ef4444;
+      color: white;
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      box-shadow: 0 0 8px #ef4444aa;
+      user-select: none;
+    }
+    .package-card .robux-icon {
+      font-size: 2.5rem;
+      color: #ef4444;
+      margin-bottom: 0.5rem;
+    }
+    .package-card h4 {
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 0.25rem;
+      color: #b91c1c;
+    }
+    .package-card .price {
+      font-weight: 600;
+      font-size: 1.125rem;
+      color: #1e293b;
+      margin-bottom: 0.5rem;
+    }
+    .package-card .stars {
+      color: #facc15;
+      margin-bottom: 1rem;
+    }
+    /* Buy Now button with shimmer glow */
+    .buy-now-btn {
+      position: relative;
+      display: inline-block;
+      background: #b91c1c;
+      color: white;
+      font-weight: 700;
+      padding: 0.6rem 1.5rem;
+      border-radius: 9999px;
+      box-shadow: 0 0 10px #b91c1caa;
+      overflow: hidden;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    .buy-now-btn:hover {
+      background: #ef4444;
+    }
+    .buy-now-btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-25deg);
+      transition: left 0.5s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .buy-now-btn:hover::after {
+      left: 125%;
+      transition: left 0.75s ease;
+    }
+    /* Toast container */
+    #toastContainer {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-width: 320px;
+    }
+    .toast {
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.3);
+      opacity: 0;
+      animation: slideIn 0.4s forwards, fadeOut 0.4s 3.6s forwards;
+      user-select: none;
+    }
+    .toast.success {
+      background: #16a34a;
+    }
+    .toast.error {
+      background: #dc2626;
+    }
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+    }
+    /* Loader spinner */
+    .loader {
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #b91c1c;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 0.5rem;
+    }
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    /* Username input & copy button container */
+    #usernameContainer {
+      position: relative;
+      max-width: 320px;
+      margin: 0 auto 1.5rem auto;
+    }
+    #usernameInput {
+      width: 100%;
+      padding-right: 3.5rem;
+      border: 2px solid #d1d5db;
+      border-radius: 0.75rem;
+      padding-left: 1rem;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    #usernameInput:focus {
+      outline: none;
+      border-color: #b91c1c;
+      box-shadow: 0 0 5px #b91c1caa;
+    }
+    #copyUsernameBtn {
+      position: absolute;
+      top: 50%;
+      right: 0.5rem;
+      transform: translateY(-50%);
+      background: #b91c1c;
+      border: none;
+      color: white;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    #copyUsernameBtn:hover {
+      background: #ef4444;
+    }
+    /* Price includes service fees label */
+    #priceNote {
+      font-size: 0.875rem;
+      color: #b91c1c;
+      font-style: italic;
+      margin-top: 0.25rem;
+      user-select: none;
+    }
+    /* Order form styles */
+    #orderForm {
+      max-width: 5xl;
+      margin: 0 auto 4rem auto;
+      background: white;
+      border-radius: 1.5rem;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 8px 30px rgb(0 0 0 / 0.1);
+    }
+    #orderForm h2 {
+      color: #b91c1c;
+      font-weight: 700;
+      font-size: 2.25rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      color: #b91c1c;
+      margin-bottom: 0.5rem;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid #d1d5db;
+      border-radius: 0.75rem;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    select:focus {
+      outline: none;
+      border-color: #b91c1c;
+      box-shadow: 0 0 5px #b91c1caa;
+    }
+    /* Radio buttons container */
+    .payment-methods-radio {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .payment-radio-label {
+      cursor: pointer;
+      border: 2px solid #d1d5db;
+      border-radius: 1rem;
+      padding: 1rem 1.5rem;
+      flex: 1 1 120px;
+      max-width: 180px;
+      text-align: center;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      background: #fff;
+    }
+    .payment-radio-label:hover {
+      border-color: #b91c1c;
+      box-shadow: 0 0 10px #b91c1caa;
+    }
+    .payment-radio-label input[type="radio"] {
+      display: none;
+    }
+    .payment-radio-label img {
+      display: block;
+      margin: 0 auto 0.5rem auto;
+      max-height: 60px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+    .payment-radio-label input[type="radio"]:checked + img {
+      transform: scale(1.1);
+    }
+    .payment-radio-label input[type="radio"]:checked {
+      outline: none;
+    }
+    .payment-radio-label input[type="radio"]:checked + img + span {
+      font-weight: 700;
+      color: #b91c1c;
+    }
+    /* File upload styles */
+    #proofContainer {
+      border: 2px dashed #d1d5db;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+      position: relative;
+      user-select: none;
+    }
+    #proofContainer.dragover {
+      border-color: #b91c1c;
+      background-color: #fee2e2;
+    }
+    #proofInput {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+    #proofPreview {
+      margin-top: 1rem;
+      max-width: 200px;
+      max-height: 200px;
+      border-radius: 1rem;
+      object-fit: contain;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    }
+    #removeProofBtn {
+      margin-top: 0.5rem;
+      background: #ef4444;
+      color: white;
+      border: none;
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    #removeProofBtn:hover {
+      background: #b91c1c;
+    }
+    /* Submit button */
+    #submitOrderBtn {
+      background: #b91c1c;
+      color: white;
+      font-weight: 700;
+      padding: 0.75rem 2rem;
+      border-radius: 9999px;
+      box-shadow: 0 0 10px #b91c1caa;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+      display: block;
+      margin: 2rem auto 0 auto;
+      font-size: 1.125rem;
+      width: 100%;
+      max-width: 320px;
+    }
+    #submitOrderBtn:hover:not(:disabled) {
+      background: #ef4444;
+    }
+    #submitOrderBtn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    /* Error message */
+    .error-msg {
+      color: #dc2626;
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      user-select: none;
+    }
+    /* Success message */
+    .success-msg {
+      color: #16a34a;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-top: 1rem;
+      text-align: center;
+      user-select: none;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      #orderForm {
+        padding: 1.5rem 1.5rem 2rem 1.5rem;
+      }
+      .payment-methods-radio {
+        gap: 1rem;
+      }
+      .payment-radio-label {
+        max-width: 140px;
+        flex: 1 1 100px;
+        padding: 1rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+  <!-- Navbar -->
+  <nav
+    class="bg-white sticky top-0 z-50 transition-shadow duration-300"
+    id="navbar"
+    role="navigation"
+  >
+    <div
+      class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+    >
+      <a class="flex items-center space-x-3" href="/">
+        <img
+          alt="Logo Roblox style letter R in red and white"
+          class="h-12 w-12 rounded-md shadow-md"
+          height="48"
+          loading="lazy"
+          src="https://storage.googleapis.com/a1aa/image/53516f4a-cd65-4624-b6cc-3841b255e7f9.jpg"
+          width="48"
+        />
+        <span class="text-2xl font-extrabold text-red-600 select-none">
+          YANSS STORE
+        </span>
+      </a>
+      <ul class="hidden md:flex space-x-8 font-semibold text-gray-700">
+        <li>
+          <a class="hover:text-red-600 transition" href="/">Beranda</a>
+        </li>
+        <li>
+          <a
+            class="text-red-600 border-b-2 border-red-600 pb-1 font-bold"
+            href="/topup"
+            >Top Up Robux</a
+          >
+        </li>
+        <li>
+          <a class="hover:text-red-600 transition" href="#caraPembelian"
+            >Cara Pembelian</a
+          >
+        </li>
+        <li>
+          <a class="hover:text-red-600 transition" href="#testimoni">Testimoni</a>
+        </li>
+        <li>
+          <a class="hover:text-red-600 transition" href="#kontak">Kontak</a>
+        </li>
+      </ul>
+      <button
+        aria-label="Toggle menu"
+        class="md:hidden text-red-600 focus:outline-none focus:ring-2 focus:ring-red-600"
+        id="mobileMenuBtn"
+      >
+        <i class="fas fa-bars fa-lg"></i>
+      </button>
+    </div>
+    <div
+      class="hidden md:hidden bg-white border-t border-gray-200 px-6 py-4 space-y-3"
+      id="mobileMenu"
+    >
+      <a class="block text-gray-700 font-semibold hover:text-red-600" href="/"
+        >Beranda</a
+      >
+      <a
+        class="block text-red-600 font-bold border-l-4 border-red-600 pl-3"
+        href="/topup"
+        >Top Up Robux</a
+      >
+      <a
+        class="block text-gray-700 font-semibold hover:text-red-600"
+        href="#caraPembelian"
+        >Cara Pembelian</a
+      >
+      <a
+        class="block text-gray-700 font-semibold hover:text-red-600"
+        href="#testimoni"
+        >Testimoni</a
+      >
+      <a
+        class="block text-gray-700 font-semibold hover:text-red-600"
+        href="#kontak"
+        >Kontak</a
+      >
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header
+    aria-label="Hero section with Roblox avatar and call to action"
+    class="bg-red-50 py-16 px-6 text-center relative overflow-hidden"
+  >
+    <img
+      alt="Roblox avatar character wearing headset and gaming gear, smiling and holding Robux coins"
+      class="absolute top-0 right-0 opacity-25 max-w-xs hidden md:block hero-img-animated"
+      height="220"
+      loading="lazy"
+      src="https://storage.googleapis.com/a1aa/image/a8d67f0b-8859-407c-5453-89ad0e84f356.jpg"
+      width="220"
+    />
+    <h1
+      class="text-4xl md:text-5xl font-extrabold text-red-600 mb-4 drop-shadow-md"
+    >
+      Top Up Robux Termurah &amp; Terpercaya
+    </h1>
+    <p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto mb-8 leading-relaxed">
+      Dapatkan Robux dengan harga terbaik dan proses cepat. Aman, mudah, dan
+      didukung oleh layanan pelanggan 24/7.
+    </p>
+    <a
+      class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition btn-pulse"
+      href="#orderForm"
+      >Beli Robux Sekarang</a
+    >
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow max-w-5xl mx-auto px-6 py-12" id="orderForm">
+    <h2>Formulir Pemesanan Robux</h2>
+    <form id="robuxOrderForm" novalidate>
+      <!-- Roblox Username -->
+      <div class="form-group">
+        <label for="username" class="required">Username Roblox <span class="text-red-600">*</span></label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Contoh: Player_123"
+          minlength="3"
+          maxlength="20"
+          pattern="^[A-Za-z0-9_]{3,20}$"
+          autocomplete="off"
+          required
+          aria-describedby="usernameError"
+        />
+        <p id="usernameError" class="error-msg hidden">Username harus 3-20 karakter, alfanumerik atau underscore.</p>
+      </div>
+
+      <!-- Robux Amount -->
+      <div class="form-group">
+        <label for="robuxAmount" class="required">Jumlah Robux <span class="text-red-600">*</span></label>
+        <select id="robuxAmount" name="robuxAmount" required aria-describedby="robuxAmountError">
+          <option value="" disabled selected>Pilih jumlah Robux</option>
+          <option value="100">100 Robux</option>
+          <option value="125">125 Robux</option>
+          <option value="150">150 Robux</option>
+          <option value="200">200 Robux</option>
+          <option value="250">250 Robux</option>
+          <option value="300">300 Robux</option>
+          <option value="400">400 Robux</option>
+          <option value="500">500 Robux</option>
+          <option value="750">750 Robux</option>
+          <option value="1000">1000 Robux</option>
+          <option value="1500">1500 Robux</option>
+          <option value="2000">2000 Robux</option>
+        </select>
+        <p id="robuxAmountError" class="error-msg hidden">Silakan pilih jumlah Robux.</p>
+      </div>
+
+      <!-- Payment Method -->
+      <div class="form-group">
+        <label class="required">Metode Pembayaran <span class="text-red-600">*</span></label>
+        <div class="payment-methods-radio" role="radiogroup" aria-labelledby="paymentMethodLabel">
+          <label class="payment-radio-label" for="paymentDana">
+            <input type="radio" id="paymentDana" name="paymentMethod" value="DANA" required />
+            <img
+              alt="Logo DANA payment method, blue wallet icon on white background"
+              src="https://storage.googleapis.com/a1aa/image/f50c0bb9-fd10-4a32-4243-16e42b3ac94d.jpg"
+              width="80"
+              height="80"
+              loading="lazy"
+            />
+            <span>DANA</span>
+          </label>
+          <label class="payment-radio-label" for="paymentGopay">
+            <input type="radio" id="paymentGopay" name="paymentMethod" value="GOPAY" />
+            <img
+              alt="Logo GOPAY payment method, green mobile wallet icon on white background"
+              src="https://storage.googleapis.com/a1aa/image/fadb4eed-cb4c-4526-c105-2b0db8b9231e.jpg"
+              width="80"
+              height="80"
+              loading="lazy"
+            />
+            <span>GOPAY</span>
+          </label>
+          <label class="payment-radio-label" for="paymentQris">
+            <input type="radio" id="paymentQris" name="paymentMethod" value="QRIS" />
+            <img
+              alt="Logo QRIS payment method, black QR code icon on white background"
+              src="https://storage.googleapis.com/a1aa/image/46c9716c-e58e-482a-6b2e-23b89b01335f.jpg"
+              width="80"
+              height="80"
+              loading="lazy"
+            />
+            <span>QRIS</span>
+          </label>
+        </div>
+        <p id="paymentMethodError" class="error-msg hidden">Silakan pilih metode pembayaran.</p>
+      </div>
+
+      <!-- Upload Proof of Payment -->
+      <div class="form-group">
+        <label for="proof" class="required">Upload Bukti Pembayaran (JPG/PNG, max 3MB) <span class="text-red-600">*</span></label>
+        <div id="proofContainer" tabindex="0" aria-describedby="proofError" aria-label="Upload bukti pembayaran dengan drag & drop atau klik untuk memilih file">
+          <p class="text-gray-500">Klik atau seret file ke sini untuk mengunggah</p>
+          <input type="file" id="proof" name="proof" accept=".jpg,.jpeg,.png" required aria-required="true" />
+          <img id="proofPreview" alt="Preview bukti pembayaran yang diunggah" class="hidden" />
+          <button type="button" id="removeProofBtn" class="hidden" aria-label="Hapus bukti pembayaran">Hapus Bukti</button>
+        </div>
+        <p id="proofError" class="error-msg hidden"></p>
+      </div>
+
+      <!-- WhatsApp Contact -->
+      <div class="form-group">
+        <label for="whatsapp">Nomor WhatsApp (Opsional)</label>
+        <input
+          type="tel"
+          id="whatsapp"
+          name="whatsapp"
+          placeholder="Contoh: 081234567890"
+          pattern="^\+?[\d\s\-]{7,15}$"
+          autocomplete="off"
+          aria-describedby="whatsappError"
+        />
+        <p id="whatsappError" class="error-msg hidden">Nomor WhatsApp tidak valid.</p>
+      </div>
+
+      <!-- Email Address -->
+      <div class="form-group">
+        <label for="email">Alamat Email (Opsional)</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="contoh@domain.com"
+          autocomplete="off"
+          aria-describedby="emailError"
+        />
+        <p id="emailError" class="error-msg hidden">Alamat email tidak valid.</p>
+      </div>
+
+      <!-- Price Display -->
+      <div class="form-group text-center">
+        <p id="priceDisplay" class="text-2xl font-extrabold text-gray-800 min-h-[2.5rem]"></p>
+        <p id="originalPriceDisplay" class="text-lg text-gray-500 line-through"></p>
+        <p id="limitedOfferLabel" class="text-red-600 font-bold text-lg mt-1 hidden">🔥 Limited Time Offer!</p>
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        id="submitOrderBtn"
+        disabled
+        aria-disabled="true"
+        aria-live="polite"
+      >
+        Pesan Sekarang
+        <span id="submitLoader" class="loader hidden" aria-hidden="true"></span>
+      </button>
+      <p id="formSuccess" class="success-msg hidden" role="alert" aria-live="assertive"></p>
+      <p id="formError" class="error-msg hidden" role="alert" aria-live="assertive"></p>
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-300 mt-16 py-8">
+    <div
+      class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-gray-600 text-sm space-y-4 md:space-y-0"
+    >
+      <p>© 2024 YANSS STORE. All rights reserved.</p>
+      <div class="flex space-x-6">
+        <a
+          aria-label="Facebook"
+          class="hover:text-red-600 transition"
+          href="https://facebook.com"
+          target="_blank"
+          ><i class="fab fa-facebook fa-lg"></i
+        ></a>
+        <a
+          aria-label="Twitter"
+          class="hover:text-red-600 transition"
+          href="https://twitter.com"
+          target="_blank"
+          ><i class="fab fa-twitter fa-lg"></i
+        ></a>
+        <a
+          aria-label="Instagram"
+          class="hover:text-red-600 transition"
+          href="https://instagram.com"
+          target="_blank"
+          ><i class="fab fa-instagram fa-lg"></i
+        ></a>
+        <a
+          aria-label="YouTube"
+          class="hover:text-red-600 transition"
+          href="https://youtube.com"
+          target="_blank"
+          ><i class="fab fa-youtube fa-lg"></i
+        ></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <script>
+    // Sticky navbar shadow on scroll
+    const navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 10) {
+        navbar.classList.add("sticky-shadow");
+      } else {
+        navbar.classList.remove("sticky-shadow");
+      }
+    });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    mobileMenuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+    // Toast notification function
+    const toastContainer = document.getElementById("toastContainer");
+    function showToast(message, type = "success") {
+      const toast = document.createElement("div");
+      toast.className = `toast ${type}`;
+      toast.textContent = message;
+      toastContainer.appendChild(toast);
+      setTimeout(() => {
+        toast.remove();
+      }, 4000);
+    }
+
+    // Calculate price with hidden markup logic
+    function calculateRobuxPrice(robuxAmount) {
+      const rate = 12900 / 100;
+      const base = robuxAmount * rate;
+      let markup = 0;
+      if (robuxAmount >= 125) {
+        markup = Math.floor(Math.random() * 601) + 900; // 900 - 1500
+      }
+      return base + markup;
+    }
+
+    // DOM Elements
+    const robuxAmountSelect = document.getElementById("robuxAmount");
+    const priceDisplay = document.getElementById("priceDisplay");
+    const originalPriceDisplay = document.getElementById("originalPriceDisplay");
+    const limitedOfferLabel = document.getElementById("limitedOfferLabel");
+    const submitOrderBtn = document.getElementById("submitOrderBtn");
+    const submitLoader = document.getElementById("submitLoader");
+    const robuxOrderForm = document.getElementById("robuxOrderForm");
+    const proofInput = document.getElementById("proof");
+    const proofContainer = document.getElementById("proofContainer");
+    const proofPreview = document.getElementById("proofPreview");
+    const removeProofBtn = document.getElementById("removeProofBtn");
+    const formSuccess = document.getElementById("formSuccess");
+    const formError = document.getElementById("formError");
+
+    // Error elements
+    const usernameInput = document.getElementById("username");
+    const usernameError = document.getElementById("usernameError");
+    const robuxAmountError = document.getElementById("robuxAmountError");
+    const paymentMethodError = document.getElementById("paymentMethodError");
+    const proofError = document.getElementById("proofError");
+    const whatsappInput = document.getElementById("whatsapp");
+    const whatsappError = document.getElementById("whatsappError");
+    const emailInput = document.getElementById("email");
+    const emailError = document.getElementById("emailError");
+
+    // Validation flags
+    let isUsernameValid = false;
+    let isRobuxAmountValid = false;
+    let isPaymentMethodValid = false;
+    let isProofValid = false;
+    let isWhatsappValid = true; // optional
+    let isEmailValid = true; // optional
+
+    // Validate username
+    function validateUsername() {
+      const val = usernameInput.value.trim();
+      const regex = /^[A-Za-z0-9_]{3,20}$/;
+      if (!regex.test(val)) {
+        usernameError.classList.remove("hidden");
+        isUsernameValid = false;
+      } else {
+        usernameError.classList.add("hidden");
+        isUsernameValid = true;
+      }
+      updateSubmitButtonState();
+    }
+    usernameInput.addEventListener("input", validateUsername);
+
+    // Validate robux amount
+    function validateRobuxAmount() {
+      if (!robuxAmountSelect.value) {
+        robuxAmountError.classList.remove("hidden");
+        isRobuxAmountValid = false;
+        clearPriceDisplay();
+      } else {
+        robuxAmountError.classList.add("hidden");
+        isRobuxAmountValid = true;
+        updatePriceDisplay();
+      }
+      updateSubmitButtonState();
+    }
+    robuxAmountSelect.addEventListener("change", validateRobuxAmount);
+
+    // Validate payment method
+    function validatePaymentMethod() {
+      const paymentRadios = document.querySelectorAll('input[name="paymentMethod"]');
+      isPaymentMethodValid = false;
+      paymentRadios.forEach((radio) => {
+        if (radio.checked) isPaymentMethodValid = true;
+      });
+      if (!isPaymentMethodValid) {
+        paymentMethodError.classList.remove("hidden");
+      } else {
+        paymentMethodError.classList.add("hidden");
+      }
+      updateSubmitButtonState();
+    }
+    const paymentRadios = document.querySelectorAll('input[name="paymentMethod"]');
+    paymentRadios.forEach((radio) => {
+      radio.addEventListener("change", validatePaymentMethod);
+    });
+
+    // Validate proof of payment
+    function validateProof() {
+      proofError.textContent = "";
+      proofError.classList.add("hidden");
+      const file = proofInput.files[0];
+      if (!file) {
+        proofError.textContent = "Bukti pembayaran wajib diunggah.";
+        proofError.classList.remove("hidden");
+        isProofValid = false;
+        updateSubmitButtonState();
+        return;
+      }
+      const validTypes = ["image/jpeg", "image/jpg", "image/png"];
+      if (!validTypes.includes(file.type)) {
+        proofError.textContent = "File harus berupa gambar JPG atau PNG.";
+        proofError.classList.remove("hidden");
+        isProofValid = false;
+        updateSubmitButtonState();
+        return;
+      }
+      if (file.size > 3 * 1024 * 1024) {
+        proofError.textContent = "Ukuran file maksimal 3MB.";
+        proofError.classList.remove("hidden");
+        isProofValid = false;
+        updateSubmitButtonState();
+        return;
+      }
+      isProofValid = true;
+      proofError.classList.add("hidden");
+      updateSubmitButtonState();
+    }
+    proofInput.addEventListener("change", () => {
+      validateProof();
+      showProofPreview();
+    });
+
+    // Show preview of uploaded proof
+    function showProofPreview() {
+      const file = proofInput.files[0];
+      if (!file) {
+        proofPreview.src = "";
+        proofPreview.classList.add("hidden");
+        removeProofBtn.classList.add("hidden");
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        proofPreview.src = e.target.result;
+        proofPreview.classList.remove("hidden");
+        removeProofBtn.classList.remove("hidden");
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Remove proof file
+    removeProofBtn.addEventListener("click", () => {
+      proofInput.value = "";
+      proofPreview.src = "";
+      proofPreview.classList.add("hidden");
+      removeProofBtn.classList.add("hidden");
+      isProofValid = false;
+      validateProof();
+    });
+
+    // Drag & drop for proof upload
+    proofContainer.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      proofContainer.classList.add("dragover");
+    });
+    proofContainer.addEventListener("dragleave", (e) => {
+      e.preventDefault();
+      proofContainer.classList.remove("dragover");
+    });
+    proofContainer.addEventListener("drop", (e) => {
+      e.preventDefault();
+      proofContainer.classList.remove("dragover");
+      if (e.dataTransfer.files.length) {
+        proofInput.files = e.dataTransfer.files;
+        validateProof();
+        showProofPreview();
+      }
+    });
+    proofContainer.addEventListener("click", () => {
+      proofInput.click();
+    });
+    proofContainer.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        proofInput.click();
+      }
+    });
+
+    // Validate WhatsApp (optional)
+    function validateWhatsapp() {
+      const val = whatsappInput.value.trim();
+      if (!val) {
+        whatsappError.classList.add("hidden");
+        isWhatsappValid = true;
+      } else {
+        const regex = /^\+?[\d\s\-]{7,15}$/;
+        if (!regex.test(val)) {
+          whatsappError.classList.remove("hidden");
+          isWhatsappValid = false;
+        } else {
+          whatsappError.classList.add("hidden");
+          isWhatsappValid = true;
+        }
+      }
+      updateSubmitButtonState();
+    }
+    whatsappInput.addEventListener("input", validateWhatsapp);
+
+    // Validate Email (optional)
+    function validateEmail() {
+      const val = emailInput.value.trim();
+      if (!val) {
+        emailError.classList.add("hidden");
+        isEmailValid = true;
+      } else {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!regex.test(val)) {
+          emailError.classList.remove("hidden");
+          isEmailValid = false;
+        } else {
+          emailError.classList.add("hidden");
+          isEmailValid = true;
+        }
+      }
+      updateSubmitButtonState();
+    }
+    emailInput.addEventListener("input", validateEmail);
+
+    // Update price display
+    function updatePriceDisplay() {
+      const amount = parseInt(robuxAmountSelect.value, 10);
+      if (!amount || isNaN(amount)) {
+        clearPriceDisplay();
+        return;
+      }
+      const finalPrice = calculateRobuxPrice(amount);
+      const basePrice = (amount * 12900) / 100;
+      priceDisplay.textContent = `Harga Akhir: Rp ${Math.ceil(finalPrice).toLocaleString("id-ID")}`;
+      if (finalPrice > basePrice) {
+        originalPriceDisplay.textContent = `Harga Asli: Rp ${Math.ceil(basePrice).toLocaleString("id-ID")}`;
+        limitedOfferLabel.classList.remove("hidden");
+      } else {
+        originalPriceDisplay.textContent = "";
+        limitedOfferLabel.classList.add("hidden");
+      }
+    }
+    function clearPriceDisplay() {
+      priceDisplay.textContent = "";
+      originalPriceDisplay.textContent = "";
+      limitedOfferLabel.classList.add("hidden");
+    }
+
+    // Enable or disable submit button based on validation
+    function updateSubmitButtonState() {
+      if (
+        isUsernameValid &&
+        isRobuxAmountValid &&
+        isPaymentMethodValid &&
+        isProofValid &&
+        isWhatsappValid &&
+        isEmailValid
+      ) {
+        submitOrderBtn.disabled = false;
+        submitOrderBtn.setAttribute("aria-disabled", "false");
+      } else {
+        submitOrderBtn.disabled = true;
+        submitOrderBtn.setAttribute("aria-disabled", "true");
+      }
+    }
+
+    // Initial validation states
+    validateUsername();
+    validateRobuxAmount();
+    validatePaymentMethod();
+    validateProof();
+    validateWhatsapp();
+    validateEmail();
+
+    // Form submission handler
+    robuxOrderForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      formSuccess.classList.add("hidden");
+      formError.classList.add("hidden");
+
+      // Final validation before submit
+      validateUsername();
+      validateRobuxAmount();
+      validatePaymentMethod();
+      validateProof();
+      validateWhatsapp();
+      validateEmail();
+
+      if (
+        !isUsernameValid ||
+        !isRobuxAmountValid ||
+        !isPaymentMethodValid ||
+        !isProofValid ||
+        !isWhatsappValid ||
+        !isEmailValid
+      ) {
+        showToast("❌ Mohon perbaiki kesalahan pada formulir.", "error");
+        return;
+      }
+
+      // Disable submit button and show loader
+      submitOrderBtn.disabled = true;
+      submitOrderBtn.setAttribute("aria-disabled", "true");
+      submitLoader.classList.remove("hidden");
+
+      // Prepare form data
+      const formData = new FormData();
+      formData.append("username", usernameInput.value.trim());
+      formData.append("robuxAmount", robuxAmountSelect.value);
+      const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+      formData.append("paymentMethod", paymentMethod);
+      formData.append("proof", proofInput.files[0]);
+      formData.append("whatsapp", whatsappInput.value.trim());
+      formData.append("email", emailInput.value.trim());
+
+      // Calculate final price for submission
+      const robuxAmount = parseInt(robuxAmountSelect.value, 10);
+      const finalPrice = Math.ceil(calculateRobuxPrice(robuxAmount));
+      formData.append("finalPrice", finalPrice);
+
+      try {
+        // Send POST request to backend endpoint
+        const response = await fetch("/submit-payment", {
+          method: "POST",
+          body: formData,
+        });
+        if (!response.ok) {
+          throw new Error(`Server error: ${response.status}`);
+        }
+        const data = await response.json();
+        if (data.status === "success") {
+          formSuccess.textContent = "✅ Pesanan berhasil dikirim! Terima kasih.";
+          formSuccess.classList.remove("hidden");
+          robuxOrderForm.reset();
+          clearPriceDisplay();
+          proofPreview.src = "";
+          proofPreview.classList.add("hidden");
+          removeProofBtn.classList.add("hidden");
+          isUsernameValid = false;
+          isRobuxAmountValid = false;
+          isPaymentMethodValid = false;
+          isProofValid = false;
+          isWhatsappValid = true;
+          isEmailValid = true;
+          updateSubmitButtonState();
+          showToast("✅ Pesanan berhasil dikirim!", "success");
+        } else {
+          throw new Error(data.message || "Terjadi kesalahan saat mengirim pesanan.");
+        }
+      } catch (error) {
+        formError.textContent = `❌ Gagal mengirim pesanan: ${error.message}`;
+        formError.classList.remove("hidden");
+        showToast(`❌ Gagal mengirim pesanan: ${error.message}`, "error");
+      } finally {
+        submitLoader.classList.add("hidden");
+        updateSubmitButtonState();
+      }
+    });
+  </script>
+</body>
+</html>
